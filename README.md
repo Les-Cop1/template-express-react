@@ -1,7 +1,8 @@
 
 # Template React Express
 
-[![CI React](https://github.com/[repo]/actions/workflows/ci.yml)](https://github.com/[repo]/actions/workflows/ci.yml)
+[![CI](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci.yml/badge.svg)](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Les-Cop1/template-express-react/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Les-Cop1/template-express-react/actions/workflows/codeql-analysis.yml)
 
 Quick description
 
