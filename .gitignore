@@ -1,7 +1,5 @@
-node_modules
-.idea
 .env
-ecosystem.json
-client/node_modules
-client/build
-client/.idea
+node_modules
+build
+.idea
+ecosystem.config.js

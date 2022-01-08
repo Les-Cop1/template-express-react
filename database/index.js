@@ -1,27 +1,21 @@
-const pool = require('../database/connection')
+const mongoose = require('mongoose');
 
-const usersInfo = async () => {
-    let conn
-    let response = {
-        success: true
-    }
+const databaseConnection = async () => {
+    const {
+        MONGO_USER,
+        MONGO_PASSWORD,
+        MONGO_DATABASE
+    } = process.env
 
     try {
-        conn = await pool.getConnection();
-
-        let res = await conn.query(`SELECT user_num as id, user_name as username FROM user`);
-
-        response = {...response, res}
-
+        await mongoose.connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_DATABASE}?retryWrites=true&w=majority`, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
     } catch (err) {
-        response = {...response, success: false, error: err}
-    } finally {
-        if (conn) {
-            await conn.end();
-        }
+        console.error(err.message);
+        process.exit(1);
     }
+};
 
-    return response
-}
-
-module.exports = {usersInfo}
+module.exports = databaseConnection;
