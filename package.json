@@ -5,10 +5,14 @@
     "scripts": {
         "start": "node ./bin/www",
         "dev": "nodemon ./bin/www",
-        "build": "yarn && cd ./front && yarn && yarn build && cd ../"
+        "front:start": "yarn workspace front start",
+        "front:build": "yarn workspace front build",
+        "front:test": "yarn workspace front test",
+        "front:lint": "yarn workspace front lint",
+        "build": "yarn && yarn front:build"
     },
     "dependencies": {
-        "axios": "^0.24.0",
+        "axios": "^0.25.0",
         "bcryptjs": "^2.4.3",
         "cookie-parser": "~1.4.4",
         "cors": "^2.8.5",
@@ -23,5 +27,8 @@
     },
     "devDependencies": {
         "nodemon": "^2.0.7"
-    }
+    },
+    "workspaces": [
+        "front"
+    ]
 }

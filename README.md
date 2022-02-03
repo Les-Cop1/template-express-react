@@ -34,16 +34,10 @@ Start the back-end
   yarn dev
 ```
 
-Go to the front-end directory
-
-```bash
-  cd ./front
-```
-
 Start the front-end
 
 ```bash
-  yarn start
+  yarn front:start
 ```
 
 ### URLs :
