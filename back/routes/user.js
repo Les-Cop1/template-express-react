@@ -41,8 +41,7 @@ router.post("/", async (req, res) => {
     let response ={
         success: true
     }
-    console.log("req.body")
-    console.log(req.body)
+
     const user = new User({
         username: req.body.username,
         password: req.body.password
