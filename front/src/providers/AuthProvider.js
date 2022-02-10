@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react"
 import AuthContext from "../contexts/AuthContext"
 import PropTypes from "prop-types";
 import {isLoggedIn, login, logout} from "../api/auth";
+import {createUser} from "../api/user";
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
     const [user, setUser] = useState(undefined)
 
     const signin = (username, password) => {
@@ -17,6 +18,28 @@ const AuthProvider = ({ children }) => {
             }
             return success
         })
+    };
+
+    const signup = (username, password, passwordConfirmation) => {
+        if (password === passwordConfirmation) {
+            createUser({username, password}).then((data) => {
+                const {success, username, error} = data
+
+                if (success === true) {
+                    setUser({username})
+                } else {
+                    console.log("Unable to create account", error)
+                }
+                return success
+            })
+        } else {
+            const error = "Password and confirmation not equal"
+            console.log(error)
+            return {
+                success: false,
+                error
+            }
+        }
     };
 
     const signout = () => {
@@ -40,7 +63,7 @@ const AuthProvider = ({ children }) => {
         })
     }, [])
 
-    const value = { user, signin, signout };
+    const value = {user, signin, signup, signout};
 
     return (
         <AuthContext.Provider value={value}>

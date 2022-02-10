@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from "react"
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom";
 import useAuth from "../utils/useAuth";
 
-const Login = () => {
-    document.title = "Login - ProjectName"
+const Register = () => {
+    document.title = "Register - ProjectName"
 
     const navigate = useNavigate();
-    const {user, signin} = useAuth();
+    const {user, signup} = useAuth();
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const success = signin(username, password)
+        const success = signup(username, password, passwordConfirmation)
         if (success === true) {
             navigate("/")
         }
@@ -27,7 +28,7 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form onSubmit={onSubmit}>
                 <input
                     type="text"
@@ -39,13 +40,18 @@ const Login = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <input
+                    type="password"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                />
                 <button type="submit">
                     Login
                 </button>
             </form>
-            <Link to={"/register"}>Register</Link>
+            <Link to={"/login"}>Login</Link>
         </div>
     )
 }
 
-export default Login
+export default Register

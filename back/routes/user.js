@@ -37,22 +37,16 @@ router.get("/:_id", verifyJWT, async (req, res) => {
 })
 
 // Create user
-router.post("/", verifyJWT, async (req, res) => {
+router.post("/", async (req, res) => {
     let response ={
         success: true
     }
-
+    console.log("req.body")
+    console.log(req.body)
     const user = new User({
         username: req.body.username,
-        password: req.body.password,
-        permission: req.body.permission
+        password: req.body.password
     });
-
-    //Validation des données
-    const autorisation = req.user.permission === 10
-    if (!autorisation) {
-        return res.send({...response, success: false, error: "Unauthorized"})
-    }
 
     //Validation des données
     const validation = req.body.username !== undefined && user.password !== undefined
@@ -106,7 +100,6 @@ router.put("/", verifyJWT, async (req, res) => {
     }
 
     req.body.username ? newUser.username = req.body.username : null
-    req.body.permission ? newUser.permission = req.body.permission : null
     //Hash du mot de passe
     if (req.body.password && req.body.confirmation) {
         if (req.body.password === req.body.confirmation) {

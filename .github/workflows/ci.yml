@@ -44,6 +44,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'back/yarn.lock') }}
+      - name: Cache workspaces node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
       - name: Build ReactJS
         run: yarn build

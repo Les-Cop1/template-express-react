@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {urlencoded} = require("express");
 
 const databaseConnection = async () => {
     const {
@@ -8,7 +9,7 @@ const databaseConnection = async () => {
     } = process.env
 
     try {
-        await mongoose.connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_DATABASE}?retryWrites=true&w=majority`, {
+        await mongoose.connect(`mongodb+srv://${MONGO_USER}:${encodeURI(MONGO_PASSWORD)}@${MONGO_DATABASE}?retryWrites=true&w=majority`, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

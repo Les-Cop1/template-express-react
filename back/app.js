@@ -6,7 +6,7 @@ const cors = require("cors");
 const databaseConnection = require("./database");
 const getWhitelist = require("./utils/getWhitelist")
 
-dotenv.config()
+dotenv.config({ path: `${__dirname}/../.env` })
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
@@ -33,18 +33,19 @@ if (process.env.NODE_ENV === 'development') {
     app.use(cors({credentials: true}))
 }
 
+const buildPath = path.resolve(__dirname, '../front/build');
+const indexHtml = path.join(buildPath, 'index.html');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'front/build')));
+app.use(express.static(buildPath));
 
 app.use('/api', indexRouter);
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 
-app.get("*", (req, res) => {
-    return res.sendFile(path.join(__dirname, "/front/build/index.html"))
-})
+app.get("*", (req, res) => res.sendFile(indexHtml))
 
 databaseConnection()
     .then(() => {
