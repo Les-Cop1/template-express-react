@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const {urlencoded} = require("express");
 
 const databaseConnection = async () => {
     const {
