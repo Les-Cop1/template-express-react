@@ -22,8 +22,11 @@ jobs:
       - name: Install node_modules
         working-directory: front
         run: yarn install --frozen-lockfile
-      - name: Run ESLint
+      - name: Run ESLint Front
         working-directory: front
+        run: yarn lint
+      - name: Run ESLint Back
+        working-directory: back
         run: yarn lint
 
   build:
@@ -39,8 +42,13 @@ jobs:
         uses: actions/cache@v2
         with:
           path: front/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'front/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
       - name: Cache Back-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'yarn.lock') }}
+      - name: Cache workspaces node_modules
         uses: actions/cache@v2
         with:
           path: node_modules

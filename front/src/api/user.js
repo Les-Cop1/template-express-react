@@ -5,4 +5,9 @@ const updateUser = async (user) => {
     return response.data
 }
 
-export {updateUser}
+const createUser = async (user) => {
+    const response = await axios.post("/user", user)
+    return response.data
+}
+
+export {updateUser, createUser}

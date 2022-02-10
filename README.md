@@ -31,7 +31,7 @@ Install backend dependencies and build the front-end
 Start the back-end
 
 ```bash
-  yarn dev
+  yarn back:dev
 ```
 
 Start the front-end
@@ -91,3 +91,4 @@ Environment variables : [Github env](https://github.com/Les-Cop1/download-manage
 ## Authors
 
 - [@LucasStbnr](https://github.com/LucasStbnr) (Template creator)
+- [@FelixLgr](https://github.com/FelixLgr) (Contributor)

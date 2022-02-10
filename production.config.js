@@ -1,7 +1,7 @@
 module.exports = {
     apps : [{
         "name": "ProjectName",
-        "script": "./bin/www",
+        "script": "./back/bin/www",
         "autorestart": true
     }],
 }
