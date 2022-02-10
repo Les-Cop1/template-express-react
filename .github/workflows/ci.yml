@@ -22,8 +22,11 @@ jobs:
       - name: Install node_modules
         working-directory: front
         run: yarn install --frozen-lockfile
-      - name: Run ESLint
+      - name: Run ESLint Front
         working-directory: front
+        run: yarn lint
+      - name: Run ESLint Back
+        working-directory: back
         run: yarn lint
 
   build:

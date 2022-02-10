@@ -5,6 +5,7 @@
     "scripts": {
         "back:start": "yarn workspace back start",
         "back:dev": "yarn workspace back dev",
+        "back:lint": "yarn workspace back lint",
         "front:start": "yarn workspace front start",
         "front:build": "yarn workspace front build",
         "front:test": "yarn workspace front test",
