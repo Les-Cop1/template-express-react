@@ -42,12 +42,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: front/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'front/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
       - name: Cache Back-End node_modules
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'back/yarn.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'yarn.lock') }}
       - name: Cache workspaces node_modules
         uses: actions/cache@v2
         with:
