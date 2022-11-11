@@ -35,14 +35,15 @@ const onError = (error: { syscall: string; code: string }) => {
 }
 
 const onListening = () => {
-  let addr = server.address()
-  let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
+  const addr = server.address()
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
   console.info('[starting] Listening on ' + bind)
 }
 
 const port = normalizePort(parseInt(process.env.PORT || '2000'))
 app.set('port', port)
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const server = require('http').createServer(app)
 
 server.listen(port)

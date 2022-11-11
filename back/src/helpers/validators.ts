@@ -1,5 +1,3 @@
-import { ICreateFileInput, ResponseType } from '@types'
-
 export const passwordValidators = (password: string) => [
   {
     validator: password !== undefined,

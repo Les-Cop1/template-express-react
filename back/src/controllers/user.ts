@@ -122,7 +122,7 @@ export const updateUser = async (_id: string, userData: IUpdateUserInput, logged
     throw new Error('Password and confirmation are not the same')
   }
 
-  let validations = []
+  const validations = []
 
   if (userData.username) {
     validations.push({
@@ -186,7 +186,7 @@ export const updateUser = async (_id: string, userData: IUpdateUserInput, logged
 }
 
 export const deleteUser = async (_id: IUser['_id'], loggedUser: IUser) => {
-  let response: ResponseType = {
+  const response: ResponseType = {
     success: true,
   }
   try {

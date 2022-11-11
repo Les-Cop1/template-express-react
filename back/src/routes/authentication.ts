@@ -101,7 +101,7 @@ router.post('/', async (req: Request, res: Response) => {
 
 // Logout
 router.delete('/', authenticated, (_req: AuthenticatedRequest, res: Response) => {
-  let response: ResponseType = {
+  const response: ResponseType = {
     success: true,
   }
 
