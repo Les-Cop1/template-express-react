@@ -1,4 +1,2 @@
 node_modules/
-build/
-craco.config.js
-ecosystem.config.js
+dist/

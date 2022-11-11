@@ -6,7 +6,8 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "format": "prettier --write '**/*.{js,jsx,ts,tsx}'"
     },
     "dependencies": {
         "@craco/craco": "^6.4.5",

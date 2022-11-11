@@ -53,5 +53,7 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
-      - name: Build ReactJS
-        run: yarn build
+      - name: Build front
+        run: yarn front:build
+      - name: Build back
+        run: yarn back:build
