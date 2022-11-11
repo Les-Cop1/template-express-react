@@ -31,7 +31,7 @@ Install backend dependencies and build the front-end
 Start the back-end
 
 ```bash
-  yarn back:dev
+  yarn back:start
 ```
 
 Start the front-end
@@ -84,11 +84,18 @@ Environment variables : [Github env](https://github.com/Les-Cop1/download-manage
 
 ## Tech Stack
 
-**Client:** React
+**Client:** React, typescript, tailwindcss
 
-**Server:** Node, express, bcryptjs, jsonwebtoken
+**Server:** Node, typescript, express, bcryptjs, jsonwebtoken
 
-## Authors
+## Contributors
 
-- [@LucasStbnr](https://github.com/LucasStbnr) (Template creator)
-- [@FelixLgr](https://github.com/FelixLgr) (Contributor)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+

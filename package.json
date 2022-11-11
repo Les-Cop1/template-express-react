@@ -1,20 +1,31 @@
 {
     "name": "template-express-react",
-    "version": "0.0.0",
+    "version": "2.0.0",
     "private": true,
     "scripts": {
-        "back:start": "yarn workspace back start",
-        "back:dev": "yarn workspace back dev",
+        "back:start": "yarn workspace back start:development",
+        "back:build": "yarn workspace back build",
+        "back:test": "yarn workspace front test",
         "back:lint": "yarn workspace back lint",
+        "back:format": "yarn workspace back format",
         "front:start": "yarn workspace front start",
         "front:build": "yarn workspace front build",
         "front:test": "yarn workspace front test",
         "front:lint": "yarn workspace front lint",
-        "build": "yarn && yarn front:build"
+        "front:format": "yarn workspace front format",
+        "build": "yarn && yarn front:build && yarn back:build"
     },
     "dependencies": {
         "axios": "^0.25.0",
         "moment": "^2.29.1"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^3.3.1",
+        "commitlint": "^17.1.2",
+        "commitlint-plugin-gitmoji": "^2.2.0",
+        "husky": "^8.0.1",
+        "pm2": "^5.2.0",
+        "prettier": "^2.7.1"
     },
     "workspaces": [
         "front",

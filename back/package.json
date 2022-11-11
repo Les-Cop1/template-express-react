@@ -3,9 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "node bin/www",
-        "dev": "nodemon bin/www",
-        "lint": "eslint ."
+        "start:development": "nodemon",
+        "start:production": "node dist/index.js",
+        "build": "rimraf dist && tsc && tsc-alias",
+        "check-types": "tsc --noemit",
+        "deploy": "pm2 deploy ecosystem.config.js production",
+        "format": "prettier --write '**/*.{js,ts}'",
+        "lint": "eslint --ext js,ts src/"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
@@ -20,10 +24,31 @@
         "path": "^0.12.7"
     },
     "devDependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.12",
+        "@types/jsonwebtoken": "^8.5.9",
+        "@typescript-eslint/eslint-plugin": "^5.42.1",
+        "@typescript-eslint/parser": "^5.42.1",
+        "commitlint": "^17.1.2",
+        "eslint": "^8.27.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-import-resolver-alias": "^1.1.2",
+        "eslint-import-resolver-typescript": "^3.5.2",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.5.1",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-security": "^1.5.0",
+        "husky": "^8.0.1",
         "nodemon": "^2.0.7",
-        "@babel/eslint-parser": "^7.16.5",
-        "eslint-plugin-node": "^11.1.0"
-    },"engines": {
+        "rimraf": "^3.0.2",
+        "ts-jest": "^29.0.3",
+        "ts-node": "^10.9.1",
+        "tsc-alias": "^1.7.0"
+    },
+    "engines": {
         "node": ">=16.0.0"
     }
 }
