@@ -3,9 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "node bin/www",
-        "dev": "nodemon bin/www",
-        "lint": "eslint ."
+        "start:development": "nodemon",
+        "start:production": "node dist/index.js",
+        "build": "rimraf dist && tsc && tsc-alias",
+        "check-types": "tsc --noemit",
+        "deploy": "pm2 deploy ecosystem.config.js production",
+        "format": "prettier --write '**/*.{js,jsx,ts}'",
+        "lint": "eslint . && yarn check-types"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",
@@ -20,10 +24,16 @@
         "path": "^0.12.7"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7",
         "@babel/eslint-parser": "^7.16.5",
-        "eslint-plugin-node": "^11.1.0"
-    },"engines": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.12",
+        "@types/jsonwebtoken": "^8.5.9",
+        "eslint-plugin-node": "^11.1.0",
+        "nodemon": "^2.0.7",
+        "rimraf": "^3.0.2"
+    },
+    "engines": {
         "node": ">=16.0.0"
     }
 }
