@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-export const databaseConnection = async () => {
+export const databaseConnection = async (): Promise<void> => {
   const mongoUrl: string = process.env.MONGO_URL || ''
 
   if (mongoUrl === '') {
@@ -9,7 +9,8 @@ export const databaseConnection = async () => {
 
   try {
     await mongoose.connect(mongoUrl)
-  } catch (err: any) {
-    console.error(err.message)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error(error.message)
   }
 }

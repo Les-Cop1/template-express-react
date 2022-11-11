@@ -4,12 +4,13 @@ import { AuthenticatedRequest, IUser } from '@types'
 
 import jwt from 'jsonwebtoken'
 
-export const authenticated = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+export const authenticated = async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<unknown> => {
   let token = req.cookies['auth-token']
 
   if (!token) {
-    token = req.headers['bearer']
+    token = req.headers.bearer
 
+    // eslint-disable-next-line security/detect-possible-timing-attacks
     if (token === undefined) {
       return res.status(401).send({ success: false, error: 'Access denied' })
     }

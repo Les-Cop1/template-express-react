@@ -41,7 +41,7 @@ router.post('/', async (req: Request, res: Response) => {
 
   const useSecureAuth = process.env.NODE_ENV !== 'development'
 
-  //Validation des données
+  // Validation des données
   const validation = req.body.username !== undefined && req.body.password !== undefined
   if (!validation) {
     return res.send({
@@ -61,6 +61,7 @@ router.post('/', async (req: Request, res: Response) => {
         success: false,
         error: 'Username or password incorrect',
       }
+
       return res.status(401).send(response)
     }
 
@@ -71,12 +72,14 @@ router.post('/', async (req: Request, res: Response) => {
         success: false,
         error: 'Username or password incorrect',
       }
+
       return res.status(401).send(response)
     }
 
     // Token generation
     const {
-      password, // eslint-disable-line no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      password,
       ...tokenContent
     } = user.toObject()
 

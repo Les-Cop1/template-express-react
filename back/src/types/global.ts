@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 export type ResponseType = {
   success: boolean
   error?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any
 }
 

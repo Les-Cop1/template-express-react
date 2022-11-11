@@ -22,7 +22,7 @@ export interface ICreateUserInput {
 export interface IUpdateUserInput {
   username?: IUser['username']
   password?: IUser['password']
-  old_password?: IUser['password']
+  oldpassword?: IUser['password']
   confirmation?: IUser['password']
   permission?: IUser['permission']
 }

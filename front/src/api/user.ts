@@ -23,14 +23,14 @@ export const createUser = async (
 export const updateUser = async (
   user: IUser,
   username: string,
-  old_password: string,
+  oldpassword: string,
   password: string,
   confirmation: string,
 ): Promise<ResponseType<UserResponseType>> => {
   try {
     const response = await axios.put(`/user/${user._id}`, {
       username,
-      old_password,
+      oldpassword,
       password,
       confirmation,
     })

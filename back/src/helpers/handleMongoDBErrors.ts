@@ -1,4 +1,5 @@
-export const handleMongoDBErrors = (error: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const handleMongoDBErrors = (error: any): string | undefined => {
   let handledError
 
   switch (error.code) {

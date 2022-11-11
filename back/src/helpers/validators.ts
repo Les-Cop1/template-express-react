@@ -1,4 +1,4 @@
-export const passwordValidators = (password: string) => [
+export const passwordValidators = (password: string): { validator: boolean; message: string }[] => [
   {
     validator: password !== undefined,
     message: 'Password is required',
@@ -25,7 +25,10 @@ export const passwordValidators = (password: string) => [
   },
 ]
 
-export const confirmationValidators = (password: string, confirmation: string) => [
+export const confirmationValidators = (
+  password: string,
+  confirmation: string,
+): { validator: boolean; message: string }[] => [
   {
     validator: confirmation !== undefined,
     message: 'Confirmation is required',

@@ -8,17 +8,20 @@ export const getCorsOptions = (): CorsOptions => {
     const nets = networkInterfaces()
 
     whitelist = Object.keys(nets).reduce((tab, name) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
+      // eslint-disable-next-line security/detect-object-injection
       for (const net of nets[name]) {
         if (net && net?.family === 'IPv4') {
           tab.push(`http://${net.address}:3000`)
         }
       }
+
       return tab
     }, whitelist)
 
     return {
-      origin: function (origin: any, callback: (arg0: Error | null, arg1: boolean) => void) {
+      origin: function (origin, callback: (arg0: Error | null, arg1: boolean) => void) {
         if (!origin || whitelist.indexOf(origin) !== -1) {
           callback(null, true)
         } else {
