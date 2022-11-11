@@ -1,0 +1,103 @@
+name: 🚀 CI/CD
+on: push
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Cache Front-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
+      - name: Cache Back-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'yarn.lock') }}
+      - name: Install dependencies
+        run: |
+          npm config set always-auth=true
+          yarn install --frozen-lockfile  --network-timeout 1000000
+        env:
+          CI: false
+  lint-front:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Cache Front-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
+      - name: Run ESLint
+        working-directory: front
+        run: pwd && yarn lint
+  build-front:
+    needs: lint-front
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Cache Front-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
+      - name: Run build
+        working-directory: front
+        run: yarn build
+  lint-back:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Cache Back-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'yarn.lock') }}
+      - name: Run ESLint
+        run: yarn back:lint
+  build-back:
+    needs: lint-back
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package.json', 'yarn.lock') }}
+      - name: Cache Back-End node_modules
+        uses: actions/cache@v2
+        with:
+          path: front/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('back/package.json', 'yarn.lock') }}
+      - name: Run build
+        run: yarn back:build
