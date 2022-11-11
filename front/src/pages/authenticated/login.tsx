@@ -25,8 +25,8 @@ export const Login: React.FC = () => {
       <h1>Login page</h1>
       {error && <p className="text-red-500">{error}</p>}
       <form onSubmit={onSubmit}>
-        <input type="text" value={username} placeholder='username' onChange={(e) => setUsername(e.target.value)} />
-        <input type="password" value={password} placeholder='password' onChange={(e) => setPassword(e.target.value)} />
+        <input type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
+        <input type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">submit</button>
       </form>
     </div>

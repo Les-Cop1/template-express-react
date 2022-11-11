@@ -5,9 +5,9 @@ import '@assets/styles/index.css'
 import App from './app'
 import reportWebVitals from './reportWebVitals'
 import setupAxios from './setupAxios'
+import { CookiesProvider } from 'react-cookie'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import {CookiesProvider} from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 

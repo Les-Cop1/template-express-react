@@ -3,7 +3,7 @@
   "trailingComma": "all",
   "singleQuote": true,
   "printWidth": 120,
-  "importOrder": ["^(express|react)$", "<THIRD_PARTY_MODULES>", "^@(.*)", "(.*)"],
+  "importOrder": ["^express$", "<THIRD_PARTY_MODULES>", "^@(.*)", "(.*)"],
   "importOrderSortSpecifiers": true,
   "importOrderSeparation": true,
   "importOrderParserPlugins": ["typescript", "classProperties", "decorators-legacy"]

@@ -32,7 +32,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     const response = await loginApi(username, password)
 
     if (response.success) {
-      setAuthState({ authenticated: true, user: response.data })
+      setAuthState({ authenticated: true, user: response.data?.user })
       redirect()
     }
 
@@ -43,7 +43,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({ 
     const response = await registerApi(username, password, confirmation)
 
     if (response.success) {
-      setAuthState({ authenticated: true, user: response.data })
+      setAuthState({ authenticated: true, user: response.data?.user })
       redirect()
     }
 
