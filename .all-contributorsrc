@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "LucasStbnr",
+      "name": "Lucas Stoebner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34753442?v=4",
+      "profile": "https://lucasstbnr.ovh",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "template-express-react",
+  "projectOwner": "Les-Cop1"
+}
