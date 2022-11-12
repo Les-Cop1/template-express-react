@@ -21,12 +21,7 @@
       "modules": true
     }
   },
-  "plugins": [
-    "prettier",
-    "import",
-    "@typescript-eslint",
-    "security"
-  ],
+  "plugins": ["prettier", "import", "@typescript-eslint", "security"],
   "rules": {
     "no-duplicate-imports": "error",
     "import/order": "off",
@@ -52,6 +47,11 @@
       "error",
       {
         "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error", {
+        "ignoreRestSiblings": true
       }
     ],
     "@typescript-eslint/explicit-module-boundary-types": [

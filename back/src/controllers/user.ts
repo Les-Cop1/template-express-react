@@ -4,6 +4,7 @@ import { ICreateUserInput, IGetUserInput, IUpdateUserInput, IUser, ResponseType 
 
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { MongooseError } from 'mongoose'
 
 export const getUsers = async (query: IGetUserInput, loggedUser: IUser): Promise<ResponseType> => {
   let response: ResponseType = {
@@ -19,7 +20,7 @@ export const getUsers = async (query: IGetUserInput, loggedUser: IUser): Promise
 
     if (tmp !== null) {
       const users = tmp.map((user) => {
-        const { ...rest } = user.toObject()
+        const { password, ...rest } = user.toObject()
 
         return rest
       })
@@ -29,7 +30,7 @@ export const getUsers = async (query: IGetUserInput, loggedUser: IUser): Promise
       response = { ...response, success: false, error: 'User not found' }
     }
   } catch (error: unknown) {
-    throw handleMongoDBErrors(error)
+    throw handleMongoDBErrors(error as MongooseError)
   }
 
   return response
@@ -82,7 +83,7 @@ export const createUser = async (userData: ICreateUserInput): Promise<ResponseTy
 
     response = { ...response, data: { user: tmpUser, token } }
   } catch (error: unknown) {
-    throw handleMongoDBErrors(error)
+    throw handleMongoDBErrors(error as MongooseError)
   }
 
   return response
@@ -94,7 +95,7 @@ export const updateUser = async (_id: string, userData: IUpdateUserInput, logged
   }
 
   let hashPassword
-  const { ...newUserFilter } = userData
+  const { oldpassword, password: _password, confirmation, permission, ...newUserFilter } = userData
   let newUser: IUpdateUserInput = newUserFilter
 
   if (loggedUser.permission < 10) {
@@ -168,14 +169,14 @@ export const updateUser = async (_id: string, userData: IUpdateUserInput, logged
       throw new Error('User not found')
     }
 
-    const { ...tmpUser } = tmp.toObject()
+    const { password, ...tmpUser } = tmp.toObject()
 
     response = { ...response, data: { user: tmpUser } }
   } catch (error: unknown) {
-    throw handleMongoDBErrors(error)
+    throw handleMongoDBErrors(error as MongooseError)
   }
 
-  const { ...tokenContent } = response.data.user
+  const { password, ...tokenContent } = response.data?.user
 
   const token = jwt.sign(tokenContent, process.env.JWT_SECRET || '')
   response.data.token = { ...response, data: { token } }
@@ -201,7 +202,7 @@ export const deleteUser = async (_id: IUser['_id'], loggedUser: IUser): Promise<
 
     await UserModel.deleteOne({ _id }).exec()
   } catch (error: unknown) {
-    throw handleMongoDBErrors(error)
+    throw handleMongoDBErrors(error as MongooseError)
   }
 
   return response
