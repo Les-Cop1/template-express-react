@@ -64,23 +64,18 @@ API Documentation : [Postman]([Postman documentation url])
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file and your ecosystem.json file (It's recommended to use the example files provided in the repo)
+To run this project, you will need to add the following environment variables to your .env file and your ecosystem.json file (It's recommended to use the example files provided in the repo : `.env.example`)
 
 Environment variables : [Github env](https://github.com/Les-Cop1/download-manager/settings/secrets/actions)
 
-`NODE_ENV`
+```dotenv
+NODE_ENV=""
+PORT=""
+TZ=""
+JWT_SECRET=""
 
-`PORT`
-
-`TZ`
-
-`JWT_SECRET`
-
-`MONGO_DATABASE`
-
-`MONGO_USER`
-
-`MONGO_PASSWORD`
+MONGO_URL=""
+```
 
 ## Tech Stack
 

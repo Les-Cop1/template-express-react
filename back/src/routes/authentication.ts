@@ -6,12 +6,13 @@ import { AuthenticatedRequest, IUser, ResponseType } from '@types'
 
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { MongooseError } from 'mongoose'
 
 const router = express.Router()
 
 // LoggedIn
 router.get('/', authenticated, (req: AuthenticatedRequest, res: Response) => {
-  let response: ResponseType = {
+  let response: ResponseType<{ user: unknown }> = {
     success: true,
   }
 
@@ -77,11 +78,7 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     // Token generation
-    const {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      password,
-      ...tokenContent
-    } = user.toObject()
+    const { password, ...tokenContent } = user.toObject()
 
     const token = jwt.sign(tokenContent, process.env.JWT_SECRET || '')
     res.cookie('auth-token', token, {
@@ -91,11 +88,11 @@ router.post('/', async (req: Request, res: Response) => {
     })
 
     response = { ...response, data: { user: { ...tokenContent, token } } }
-  } catch (error) {
+  } catch (error: unknown) {
     response = {
       ...response,
       success: false,
-      error: handleMongoDBErrors(error),
+      error: handleMongoDBErrors(error as MongooseError),
     }
   }
 

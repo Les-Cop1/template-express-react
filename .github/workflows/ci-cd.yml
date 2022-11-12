@@ -45,7 +45,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('front/package.json', 'yarn.lock') }}
       - name: Run ESLint
         working-directory: front
-        run: pwd && yarn lint
+        run: yarn lint
   build-front:
     needs: lint-front
     runs-on: ubuntu-latest

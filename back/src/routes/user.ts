@@ -4,6 +4,8 @@ import { createUser, deleteUser, getUsers, updateUser } from '@controllers'
 import { authenticated } from '@helpers'
 import { AuthenticatedRequest, ICreateUserInput, IGetUserInput, IUpdateUserInput, IUser, ResponseType } from '@types'
 
+import { MongooseError } from 'mongoose'
+
 const router = express.Router()
 
 router.get('/', authenticated, async (req: AuthenticatedRequest, res: Response) => {
@@ -12,9 +14,8 @@ router.get('/', authenticated, async (req: AuthenticatedRequest, res: Response) 
   }
   try {
     response = { ...response, ...(await getUsers(<IGetUserInput>req.query, <IUser>req.user)) }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    response = { ...response, success: false, error: error.message }
+  } catch (error: unknown) {
+    response = { ...response, success: false, error: (error as MongooseError).message }
   }
 
   res.send(response)
@@ -35,9 +36,8 @@ router.post('/', async (req: Request, res: Response) => {
       httpOnly: useSecureAuth,
       secure: useSecureAuth,
     })
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    response = { ...response, success: false, error: error.message }
+  } catch (error: unknown) {
+    response = { ...response, success: false, error: (error as MongooseError).message }
   }
 
   res.send(response)
@@ -61,9 +61,8 @@ router.put('/:_id', authenticated, async (req: AuthenticatedRequest, res: Respon
       httpOnly: useSecureAuth,
       secure: useSecureAuth,
     })
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    response = { ...response, success: false, error: error.message }
+  } catch (error: unknown) {
+    response = { ...response, success: false, error: (error as MongooseError).message }
   }
 
   res.send(response)
@@ -76,9 +75,8 @@ router.delete('/:_id', authenticated, async (req: AuthenticatedRequest, res: Res
 
   try {
     response = { ...response, ...(await deleteUser(<IUser['_id']>req.params._id, <IUser>req.user)) }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
-    response = { ...response, success: false, error: error.message }
+  } catch (error: unknown) {
+    response = { ...response, success: false, error: (error as MongooseError).message }
   }
 
   res.send(response)

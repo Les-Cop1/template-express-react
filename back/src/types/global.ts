@@ -4,11 +4,11 @@ import { IUser } from '@types'
 
 import mongoose from 'mongoose'
 
-export type ResponseType = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ResponseType<Type = any> = {
   success: boolean
   error?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any
+  data?: Type
 }
 
 export interface AuthenticatedRequest extends Request {

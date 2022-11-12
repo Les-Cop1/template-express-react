@@ -1,8 +1,0 @@
-node_modules/
-yarn-error.log
-.env
-deploy.key
-dist/
-.DS_Store
-coverage
-coverage.txt
