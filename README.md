@@ -94,6 +94,7 @@ MONGO_URL=""
 <table>
   <tbody>
     <tr>
+      <td align="center"><a href="https://lucasstbnr.ovh"><img src="https://avatars.githubusercontent.com/u/34753442?v=4?s=100" width="100px;" alt="Lucas Stoebner"/><br /><sub><b>Lucas Stoebner</b></sub></a><br /><a href="https://github.com/Les-Cop1/template-express-react/commits?author=LucasStbnr" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/FelixLgr"><img src="https://avatars.githubusercontent.com/u/46224769?v=4?s=100" width="100px;" alt="Félix Legrelle"/><br /><sub><b>Félix Legrelle</b></sub></a><br /><a href="https://github.com/Les-Cop1/template-express-react/commits?author=FelixLgr" title="Code">💻</a></td>
     </tr>
   </tbody>

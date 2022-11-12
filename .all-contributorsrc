@@ -7,6 +7,15 @@
   "commitConvention": "angular",
   "contributors": [
     {
+      "login": "LucasStbnr",
+      "name": "Lucas Stoebner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34753442?v=4",
+      "profile": "https://lucasstbnr.ovh",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "FelixLgr",
       "name": "Félix Legrelle",
       "avatar_url": "https://avatars.githubusercontent.com/u/46224769?v=4",
