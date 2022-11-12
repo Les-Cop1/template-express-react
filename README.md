@@ -1,11 +1,10 @@
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 # Template React Express
 
-[![CI](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci.yml/badge.svg)](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci.yml)
+[![CI-CD](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Les-Cop1/template-express-react/actions/workflows/ci-cd.yml)
 [![CodeQL](https://github.com/Les-Cop1/template-express-react/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Les-Cop1/template-express-react/actions/workflows/codeql-analysis.yml)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Quick description
 
