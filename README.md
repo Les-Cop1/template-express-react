@@ -31,19 +31,13 @@ Install backend dependencies and build the front-end
 Start the back-end
 
 ```bash
-  yarn dev
-```
-
-Go to the front-end directory
-
-```bash
-  cd ./front
+  yarn back:start
 ```
 
 Start the front-end
 
 ```bash
-  yarn start
+  yarn front:start
 ```
 
 ### URLs :
@@ -70,30 +64,33 @@ API Documentation : [Postman]([Postman documentation url])
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file and your ecosystem.json file (It's recommended to use the example files provided in the repo)
+To run this project, you will need to add the following environment variables to your .env file and your ecosystem.json file (It's recommended to use the example files provided in the repo : `.env.example`)
 
 Environment variables : [Github env](https://github.com/Les-Cop1/download-manager/settings/secrets/actions)
 
-`NODE_ENV`
+```dotenv
+NODE_ENV=""
+PORT=""
+TZ=""
+JWT_SECRET=""
 
-`PORT`
-
-`TZ`
-
-`JWT_SECRET`
-
-`MONGO_DATABASE`
-
-`MONGO_USER`
-
-`MONGO_PASSWORD`
+MONGO_URL=""
+```
 
 ## Tech Stack
 
-**Client:** React
+**Client:** React, typescript, tailwindcss
 
-**Server:** Node, express, bcryptjs, jsonwebtoken
+**Server:** Node, typescript, express, bcryptjs, jsonwebtoken
 
-## Authors
+## Contributors
 
-- [@LucasStbnr](https://github.com/LucasStbnr) (Template creator)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+

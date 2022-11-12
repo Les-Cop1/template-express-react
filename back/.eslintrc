@@ -1,0 +1,78 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "prettier",
+    "standard",
+    "plugin:import/typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:security/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "plugins": ["prettier", "import", "@typescript-eslint", "security"],
+  "rules": {
+    "no-duplicate-imports": "error",
+    "import/order": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "prettier/prettier": [
+      "warn",
+      {
+        "semi": false,
+        "trailingComma": "all",
+        "singleQuote": true,
+        "printWidth": 120
+      }
+    ],
+    "newline-before-return": 1,
+    "no-useless-return": 1,
+    "prefer-const": 1,
+    "no-unused-vars": 0,
+    "no-throw-literal": 0,
+    "import/no-unresolved": "error",
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error", {
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "error",
+      {
+        "allowArgumentsExplicitlyTypedAsAny": true
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  }
+}
