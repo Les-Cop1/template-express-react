@@ -1,10 +1,10 @@
 import mongoose, { MongooseError } from 'mongoose'
 
 export const databaseConnection = async (): Promise<void> => {
-  const mongoUrl: string = process.env.MONGO_URL || ''
+  const mongoUrl: string = decodeURIComponent(process.env.MONGO_URI_ENCODED || '')
 
   if (mongoUrl === '') {
-    throw new Error('MONGO_URL has not been set')
+    throw new Error('MONGO_URI_ENCODED has not been set')
   }
 
   try {
