@@ -74,7 +74,7 @@ PORT=""
 TZ=""
 JWT_SECRET=""
 
-MONGO_URL=""
+MONGO_URI_ENCODED=""
 ```
 
 ## Tech Stack
